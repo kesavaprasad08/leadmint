@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 function RegisterPage() {
   const [email, setEmail] = useState("");
@@ -47,46 +48,62 @@ function RegisterPage() {
   };
 
   return (
-    <div className="bg-slate-50 h-screen flex items-center justify-center">
-      <div className="card mx-auto max-w-md p-6 shadow-md">
-        <h2 className="text-center  mb-4">Register</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="r-input mb-4">
-            <label className="label ">Email</label>
-            <input
-              className="input w-full p-2 rounded"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            {errors.email && <p className="text-red-500">{errors.email}</p>}
+    <div className="bg-slate-50 h-screen flex flex-col">
+      <nav className="bg-slate-100 text-black p-4">
+        <div className="flex items-center justify-between">
+          <Link to="/" className=" font-bold text-xl">
+            <img src="/applogo.png" alt="Logo" className="mr-3" />
+          </Link>
+          <div>
+            <Link to="/" className=" mx-4">
+              Login
+            </Link>
           </div>
-          <div className="r-input mb-4">
-            <label className="">Password</label>
-            <input
-              className="input bg-slate-50  w-full p-2 rounded"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {errors.password && <p className="text-red-500">{errors.password}</p>}
-          </div>
-          <div className="r-input mb-4">
-            <label className="">Confirm Password</label>
-            <input
-              className="input bg-slate-50  w-full p-2 rounded"
-              type="password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
-            {errors.confirmPassword && (
-              <p className="text-red-500">{errors.confirmPassword}</p>
-            )}
-          </div>
-          <button type="submit" className="btn btn-primary w-full">
-            Register
-          </button>
-        </form>
+        </div>
+      </nav>
+      <div className="flex-grow flex items-center justify-center">
+        <div className="card mx-auto max-w-md p-6 shadow-md">
+          <h2 className="text-center  mb-4">Register</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="r-input mb-4">
+              <label className="label ">Email</label>
+              <input
+                className="input w-full p-2 rounded"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              {errors.email && <p className="text-red-500">{errors.email}</p>}
+            </div>
+            <div className="r-input mb-4">
+              <label className="">Password</label>
+              <input
+                className="input bg-slate-50  w-full p-2 rounded"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              {errors.password && (
+                <p className="text-red-500">{errors.password}</p>
+              )}
+            </div>
+            <div className="r-input mb-4">
+              <label className="">Confirm Password</label>
+              <input
+                className="input bg-slate-50  w-full p-2 rounded"
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+              {errors.confirmPassword && (
+                <p className="text-red-500">{errors.confirmPassword}</p>
+              )}
+            </div>
+            <button type="submit" className="btn btn-primary w-full">
+              Register
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
